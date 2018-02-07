@@ -1,0 +1,15 @@
+{
+    "extends": "eslint-config-airbnb",
+    "parser": "babel-eslint",
+    "env": {
+        "node": true,
+        "jest/globals": true
+    },
+    "plugins": [
+        "jest"
+    ],
+    "rules": {
+        "max-len": ["warn", { "code": 120, "ignoreUrls": true }],
+        "indent": ["error", 4]
+    }
+}
