@@ -10,8 +10,9 @@ Before considering to use GraphQL Profiler, you might consider [Apollo Engine](h
 These tools are more complete, more powerful and they are maintained by the awesome Apollo team.
 
 But GraphQL Profiler has some advantages compared to the Apollo Suite:
+
 - It's smaller, simpler and easier to hack
-- It can be used on non-usual usage of GraphQL (like SSR or just server-to-server GraphQL communication)
+- It fits even non-standard use cases of GraphQL (like SSR, or server-to-server GraphQL communication)
 - It's only about your resolvers, nothing else
 - It's heavily customisable, you can [write your own reporter in 10 lines](#write-your-own-reporter)
 - It allows to plug your own storage, no need to pay Apollo to host your data
@@ -20,14 +21,16 @@ But GraphQL Profiler has some advantages compared to the Apollo Suite:
 
 **Installation**
 
-Add the profiler to your project dependencies.
+Add the profiler to your project dependencies:
 
-```js
+```sh
+# If you like npm
 npm install --save gql-profiler
+# or if you like yarn
 yarn add gql-profiler
 ```
 
-Choose a reporter, wrap your resolvers with the profiler and use the reporter whenever you want:
+Choose a reporter, wrap your resolvers with the profiler, and use the reporter whenever you want:
 
 ```js
 import express from 'express';
@@ -42,11 +45,13 @@ const reporter = htmlReporter();
 
 const schema = makeExecutableSchema({
   typeDefs,
+  // wrap your resolvers with the profiler
   resolvers: profileResolvers(resolvers, { reporter }),
 });
 
 const app = express();
 
+// add a route to display profiles
 app.get('/profiler', (req, res) => {
     res.send(reporter.getHtml());
 });
@@ -72,15 +77,9 @@ profileResolvers(resolvers, {
 });
 ```
 
-### Available Reporters
+## Reporters
 
-**nullReporter**
-
-```js
-import { nullReporter } from 'gql-reporter';
-const reporter = nullReporter();
-```
-Does literaly nothing and doesn't have useful API.
+Available reporters: 
 
 **memoryReporter**
 
@@ -103,6 +102,15 @@ const html = reporter.getHtml(); // Build a nice HTML page with charts
 reporter.reset(); // Delete all data in the reporter
 ```
 
+**nullReporter**
+
+```js
+import { nullReporter } from 'gql-reporter';
+const reporter = nullReporter();
+```
+
+Does literaly nothing, and doesn't have useful API. Used in tests.
+
 **More soon?**
 
 - websocketReporter
@@ -110,8 +118,9 @@ reporter.reset(); // Delete all data in the reporter
 - redisReporter
 - traceEventFormatReporter
 
-### Write your own reporter
-Write a reporter is very simple, here is an example for of a consoleReporter:
+## Writing your own reporter
+
+Writing a reporter is very simple, here is an example of a `consoleReporter`:
 
 ```js
 import uuid from 'uuid';
