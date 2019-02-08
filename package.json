@@ -1,6 +1,6 @@
 {
   "name": "gql-profiler",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A standalone performance profiler for GraphQL resolvers",
   "main": "lib/index.js",
   "repository": "https://github.com/marmelab/gql-profiler",
@@ -24,7 +24,7 @@
     "lolex": "2.3.2"
   },
   "dependencies": {
-    "lodash": "4.17.5",
+    "lodash": "4.17.11",
     "uuid": "3.2.1"
   }
 }
