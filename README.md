@@ -1,3 +1,13 @@
+<table>
+        <tr>
+            <td><img width="40" src="https://cdnjs.cloudflare.com/ajax/libs/octicons/8.5.0/svg/issue-reopened.svg" alt="inviting new maintainers" /></td>
+            <td><strong>Archived Repository</strong><br />
+            This code is no longer maintained. If you're interested in taking over the code and its maintenance, please <a href="mailto:contact@marmelab.com?subject=Repo maintenance transfer">contact marmelab</a>.
+        </td>
+        </tr>
+</table>
+
+
 [![npm version](https://badge.fury.io/js/gql-profiler.svg)](https://badge.fury.io/js/gql-profiler)
 
 # GraphQL Profiler
